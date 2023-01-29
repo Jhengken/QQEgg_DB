@@ -77,7 +77,6 @@ Create table Products(
 		Name nvarchar(50),
 		UnitPrice int,
 		Image nvarchar(50),
-		constraint UQ_Products_Image unique (Image),
 		constraint PK_Products primary key (ProductID asc),
 		constraint FK_Products_Suppliers foreign key(SupplierID)
 		references dbX.dbo.Suppliers(SupplierID)
@@ -126,7 +125,6 @@ Create table PSite(
 		UnitInStock int,
 		Image nvarchar(50),
 		Description nvarchar(500),
-		constraint UQ_PSite_Image unique (Image),
 		constraint PK_PSite primary key (SiteID asc),
 		constraint FK_PSite_Products foreign key(ProductID)
 		references dbX.dbo.Products(ProductID)
