@@ -20,8 +20,8 @@
 use dbX
 -----------------------Managers OK
 
-drop table if exists Managers
-create table Managers(
+drop table if exists tManagers
+create table tManagers(
 		ManagerID int identity(1,1),
 		Name nvarchar(50) not null,
 		Email nvarchar(50),
@@ -33,8 +33,8 @@ create table Managers(
 go
 -----------------------Customers OK
 
-drop table if exists Customers        
-Create table Customers(
+drop table if exists tCustomers        
+Create table tCustomers(
 		CustomerID int identity(1,1),
 		Name nvarchar(50) not null,
 		Sex bit,
@@ -52,8 +52,8 @@ Create table Customers(
 go
 -----------------------Suppliers OK
 
-drop table if exists Suppliers
-Create table Suppliers(
+drop table if exists tSuppliers
+Create table tSuppliers(
 		SupplierID int identity(1,1),
 		Name nvarchar(50) not null,
 		Email nvarchar(50),
@@ -69,29 +69,29 @@ Create table Suppliers(
 go
 -----------------------Category OK
 
-drop table if exists Category
-Create table Category(
+drop table if exists tCategory
+Create table tCategory(
 		CategoryID int identity(1,1),
 		Name nvarchar(50) not null,
 		constraint PK_Category primary key (CategoryID asc))
 go
 -----------------------Products OK
 
-drop table if exists Products
-Create table Products(
+drop table if exists tProducts
+Create table tProducts(
 		ProductID int identity(1,1),
 		SupplierID int,
 		Name nvarchar(50) not null,
 		constraint PK_Products primary key (ProductID asc),
 		constraint FK_Products_Suppliers foreign key(SupplierID)
-		references dbX.dbo.Suppliers(SupplierID)
+		references dbX.dbo.tSuppliers(SupplierID)
 		on delete cascade
 		on update cascade)
 go
 -----------------------PSite
 
-drop table if exists PSite
-Create table PSite(
+drop table if exists tPSite
+Create table tPSite(
 		SiteID int identity(1,1),
 		ProductID int,
 		Name nvarchar(50) not null,
@@ -103,14 +103,14 @@ Create table PSite(
 		Description nvarchar(200),
 		constraint PK_PSite primary key (SiteID asc),
 		constraint FK_PSite_Products foreign key(ProductID)
-		references dbX.dbo.Products(ProductID)
+		references dbX.dbo.tProducts(ProductID)
 		on delete cascade
 		on update cascade)
 go
 -----------------------PSiteRoom
 
-drop table if exists PSiteRoom
-Create table PSiteRoom(
+drop table if exists tPSiteRoom
+Create table tPSiteRoom(
 		RoomID int identity(1,1),
 		SiteID int,
 		CategoryID int,
@@ -122,18 +122,18 @@ Create table PSiteRoom(
 		Description nvarchar(200),
 		constraint PK_PSiteRoom primary key (RoomID asc),
 		constraint FK_PSiteRoom_PSite foreign key(SiteID)
-		references dbX.dbo.PSite(SiteID)
+		references dbX.dbo.tPSite(SiteID)
 		on delete cascade
 		on update cascade,
 		constraint FK_PSiteRoom_Category foreign key(CategoryID)
-		references dbX.dbo.Category(CategoryID)
+		references dbX.dbo.tCategory(CategoryID)
 		on delete cascade
 		on update cascade)
 go
 -----------------------Coupons OK
 
-drop table if exists Coupons
-Create table Coupons(
+drop table if exists tCoupons
+Create table tCoupons(
 		CouponID int identity(1,1),
 		Code nvarchar(50),
 		Discount money,            --折扣都用5折(0.5)、6折(0.6)、79折(0.79)
@@ -145,8 +145,8 @@ Create table Coupons(
 go
 -----------------------COrders
 
-drop table if exists COrders
-create table COrders(
+drop table if exists tCOrders
+create table tCOrders(
 		OrderID int identity(1,1),
 		CustomerID int,
 		ProductID int,
@@ -157,36 +157,36 @@ create table COrders(
 		EndDate datetime,
 		constraint PK_COrders primary key(OrderID),
 		constraint FK_COrders_Customers foreign key(CustomerID)
-		references dbX.dbo.Customers(CustomerID)
+		references dbX.dbo.tCustomers(CustomerID)
 		on delete cascade
 		on update cascade,
 		constraint FK_COrders_Products foreign key(ProductID)
-		references dbX.dbo.Products(ProductID)
+		references dbX.dbo.tProducts(ProductID)
 		on delete cascade
 		on update cascade);
 go
 -----------------------COrderDetail
 
-drop table if exists COrderDetail
-Create table COrderDetail(
+drop table if exists tCOrderDetail
+Create table tCOrderDetail(
 		OrderID int identity(1,1),
 		CouponID int,
 		RoomID int,
 		Price money,
 		constraint PK_COrderDetail primary key (OrderID asc),
 		constraint FK_COrderDetail_PSiteRoom foreign key(RoomID)
-		references dbX.dbo.PSiteRoom(RoomID)
+		references dbX.dbo.tPSiteRoom(RoomID)
 		on delete cascade
 		on update cascade,
 		constraint FK_COrderDetail_Coupons foreign key(CouponID)
-		references dbX.dbo.Coupons(CouponID)
+		references dbX.dbo.tCoupons(CouponID)
 		on delete cascade
 		on update cascade)
 go
 -----------------------Advertise OK
 
-drop table if exists Advertise
-create table Advertise(
+drop table if exists tAdvertise
+create table tAdvertise(
 		AdvertiseID int identity(1,1),
 		Name nvarchar(50) not null,
 		DatePrice money,
@@ -195,8 +195,8 @@ create table Advertise(
 go
 -----------------------AOrders OK
 
-drop table if exists AOrders
-create table AOrders(
+drop table if exists tAOrders
+create table tAOrders(
 		AOrderID int identity(1,1),
 		SupplierID int,
 		AdvertiseID int,
@@ -206,18 +206,18 @@ create table AOrders(
 		Price money,
 		constraint PK_AOrders primary key(AOrderID),
 		constraint FK_AOrders_Suppliers foreign key(SupplierID)
-		references dbx.dbo.Suppliers(SupplierID)
+		references dbx.dbo.tSuppliers(SupplierID)
 		on delete cascade
 		on update cascade,
 		constraint FK_AOrders_Advertise foreign key(AdvertiseID)
-		references dbx.dbo.Advertise(AdvertiseID)
+		references dbx.dbo.tAdvertise(AdvertiseID)
 		on delete cascade
 		on update cascade);
 go
 -----------------------Evaluations OK
 
-drop table if exists Evaluations
-create table Evaluations(
+drop table if exists tEvaluations
+create table tEvaluations(
 		EvaluationID int identity(1,1),
 		CustomerID int,
 		RoomID int,
@@ -228,11 +228,11 @@ create table Evaluations(
 		Star int,
 		constraint PK_Evaluations primary key(EvaluationID),
 		constraint FK_Evaluations_Customers foreign key(CustomerID)
-		references dbX.dbo.Customers(CustomerID)
+		references dbX.dbo.tCustomers(CustomerID)
 		on delete cascade
 		on update cascade,
 		constraint FK_Evaluations_PSiteRoom foreign key(RoomID)
-		references dbX.dbo.PSiteRoom(RoomID)
+		references dbX.dbo.tPSiteRoom(RoomID)
 		on delete cascade
 		on update cascade);
 go
@@ -240,10 +240,10 @@ go
 
 
 ----------------------------------[Suppliers] 資料表
-SET IDENTITY_INSERT [dbo].[Suppliers] ON 
+SET IDENTITY_INSERT [dbo].[tSuppliers] ON 
 
-INSERT [dbo].[Suppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (1, N'巴拉巴拉', N'bb@gmail.com', N'09111', N'b123', N'台南市南區', 100, 0)
-INSERT [dbo].[Suppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (8, N'明明', N'mm@gmail.com', N'09222', N'm123', N'台南市東區', 100, 0)
-INSERT [dbo].[Suppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (9, N'賣西瓜', N'mimi@gmail.com', N'09333', N'mi12', NULL, 100, 0)
-SET IDENTITY_INSERT [dbo].[Suppliers] OFF
+INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (1, N'巴拉巴拉', N'bb@gmail.com', N'09111', N'b123', N'台南市南區', 100, 0)
+INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (8, N'明明', N'mm@gmail.com', N'09222', N'm123', N'台南市東區', 100, 0)
+INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (9, N'賣西瓜', N'mimi@gmail.com', N'09333', N'mi12', NULL, 100, 0)
+SET IDENTITY_INSERT [dbo].[tSuppliers] OFF
 GO
