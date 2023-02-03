@@ -214,6 +214,14 @@ create table tAOrders(
 		on delete cascade
 		on update cascade);
 go
+-----------------------ETitle OK
+
+drop table if exists tETitle
+Create table tETitle(
+		TitleID int identity(1,1),
+		TitleName nvarchar(50) not null,
+		constraint PK_ETitle primary key (TitleID asc))
+go
 -----------------------Evaluations OK
 
 drop table if exists tEvaluations
@@ -221,8 +229,8 @@ create table tEvaluations(
 		EvaluationID int identity(1,1),
 		CustomerID int,
 		RoomID int,
+		TitleID int,
 		Date datetime default sysdatetime(),     --預設目前的系統時間
-		Title nvarchar(50),
 		Description nvarchar(200),
 		Response nvarchar(200),
 		Star int,
@@ -233,6 +241,10 @@ create table tEvaluations(
 		on update cascade,
 		constraint FK_Evaluations_PSiteRoom foreign key(RoomID)
 		references dbX.dbo.tPSiteRoom(RoomID)
+		on delete cascade
+		on update cascade,
+		constraint FK_Evaluations_ETitle foreign key(TitleID)
+		references dbX.dbo.tETitle(TitleID)
 		on delete cascade
 		on update cascade);
 go
@@ -246,4 +258,12 @@ INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [
 INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (8, N'明明', N'mm@gmail.com', N'09222', N'm123', N'台南市東區', 100, 0)
 INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (9, N'賣西瓜', N'mimi@gmail.com', N'09333', N'mi12', NULL, 100, 0)
 SET IDENTITY_INSERT [dbo].[tSuppliers] OFF
-GO
+
+----------------------------------[[tCategory]] 資料表
+SET IDENTITY_INSERT [dbo].[tCategory] ON 
+INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (1, N'多人辦公室')
+INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (2, N'會議室')
+INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (3, N'工作室')
+INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (4, N'展演空間')
+INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (5, N'廚房')
+SET IDENTITY_INSERT [dbo].[tCategory] OFF
