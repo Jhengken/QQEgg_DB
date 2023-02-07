@@ -259,7 +259,7 @@ INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [
 INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (9, N'賣西瓜', N'mimi@gmail.com', N'09333', N'mi12', NULL, 100, 0)
 SET IDENTITY_INSERT [dbo].[tSuppliers] OFF
 
-----------------------------------[[tCategory]] 資料表
+----------------------------------[tCategory] 資料表
 SET IDENTITY_INSERT [dbo].[tCategory] ON 
 INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (1, N'多人辦公室')
 INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (2, N'會議室')
@@ -267,3 +267,9 @@ INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (3, N'工作室')
 INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (4, N'展演空間')
 INSERT [dbo].[tCategory] ([CategoryID], [Name]) VALUES (5, N'廚房')
 SET IDENTITY_INSERT [dbo].[tCategory] OFF
+
+----------------------------------[tETitle] 資料表
+SET IDENTITY_INSERT [dbo].[tETitle] ON 
+INSERT [dbo].[tETitle] ([TitleID], [TitleName]) VALUES (1, N'空間環境')
+INSERT [dbo].[tETitle] ([TitleID], [TitleName]) VALUES (2, N'設備相關')
+SET IDENTITY_INSERT [dbo].[tETitle] OFF
