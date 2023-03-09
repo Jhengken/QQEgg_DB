@@ -122,6 +122,7 @@ Create table tPSiteRoom(
 		Image nvarchar(50),
 		status bit default 0,
 		Description nvarchar(200),
+		RoomPassWork nvarchar(200),
 		constraint PK_tPSiteRoom primary key (RoomID asc),
 		constraint FK_tPSiteRoom_tPSite foreign key(SiteID)
 		references dbX.dbo.tPSite(SiteID)
