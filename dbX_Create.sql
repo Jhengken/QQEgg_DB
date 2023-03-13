@@ -42,7 +42,7 @@ Create table tCustomers(
 		Phone nvarchar(50),
 		Password nvarchar(500),
 		Birth datetime,
-		CreditCard nvarchar(50),
+		CreditCard nvarchar(200),
 		CreditPoints int default 100,
 		BlackListed bit default 0,
 		constraint UQ_tCustomers_Email unique (Email),
