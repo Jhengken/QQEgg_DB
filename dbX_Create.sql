@@ -47,7 +47,6 @@ Create table tCustomers(
 		BlackListed bit default 0,
 		constraint UQ_tCustomers_Email unique (Email),
 		constraint UQ_tCustomers_Phone unique (Phone),
-		constraint UQ_tCustomers_CreditCard unique (CreditCard),
 		constraint PK_tCustomers primary key clustered (CustomerID asc))
 go
 -----------------------tSuppliers OK
