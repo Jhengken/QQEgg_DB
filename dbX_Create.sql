@@ -144,6 +144,7 @@ Create table tCoupons(
 		ExpiryDate datetime,
 		Quantity int,
 		Available bit default 1,
+		HowPoint int,
 		constraint UQ_tCoupons_Code unique (Code),
 		constraint PK_Coupons primary key (CouponID asc))
 go
