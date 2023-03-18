@@ -41,7 +41,7 @@ begin
 	join tPSiteRoom as psr on ps.SiteID=psr.SiteID
 	where p.ProductID=@ProductID
 
-	print 'tProducts OK' + str(@@NESTLEVEL )
+	--print 'tProducts OK' + str(@@NESTLEVEL )
 	delete from tPSite where ProductID=@ProductID
 	delete from tProducts where ProductID=@ProductID
 end
@@ -70,5 +70,23 @@ else
 		--select * from tPSite where SiteID=@SiteID
 		--select * from tPSiteRoom where SiteID=@SiteID
 	end
+
+--=================================================
+
+
+
+--=========新增tOrders也新增tOrderdetail裡面的OrderID==============
+
+--drop trigger if exists tg_tCOrders_Create
+--go
+
+--create trigger tg_tCOrders_Create on tCOrders
+--for insert
+--as
+--begin
+--		declare @OrderID nvarchar(20)
+--		select @OrderID OrderID from inserted
+--		insert
+--end
 
 --=================================================

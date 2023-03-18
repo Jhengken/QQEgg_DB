@@ -152,14 +152,16 @@ go
 drop table if exists tCOrders
 create table tCOrders(
 		OrderID int identity(1,1),
+		TradeNo nvarchar(20),
 		CustomerID int,
 		ProductID int,
+		Price money,
 		OrderDate datetime default sysdatetime() not null,     --預設目前的系統時間
 		ReturnDate datetime,                                       --預定歸還日期(行動電源除外)
 		CancelDate datetime,
-		TakeDate datetime,
+		StartDate datetime,
 		EndDate datetime,
-		Price money,
+		constraint UQ_tCOrders_TradeNo unique (TradeNo),
 		constraint PK_tCOrders primary key(OrderID),
 		constraint FK_tCOrders_tCustomers foreign key(CustomerID)
 		references dbX.dbo.tCustomers(CustomerID),
