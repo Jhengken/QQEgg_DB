@@ -155,7 +155,6 @@ create table tCOrders(
 		TradeNo nvarchar(20),
 		CustomerID int,
 		ProductID int,
-		Price money,
 		OrderDate datetime default sysdatetime() not null,     --預設目前的系統時間
 		ReturnDate datetime,                                       --預定歸還日期(行動電源除外)
 		CancelDate datetime,
@@ -180,7 +179,7 @@ Create table tCOrderDetail(
 		OrderID int,
 		RoomID int,
 		CouponID int,
-		UnitPrice money,
+		Price money,
 		constraint PK_tCOrderDetail primary key (OrderID asc,RoomID ASC),
 		constraint FK_tCOrderDetail_tCOrders foreign key(OrderID)
 		references dbX.dbo.tCOrders(OrderID),
