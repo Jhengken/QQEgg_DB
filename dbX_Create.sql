@@ -155,10 +155,11 @@ create table tCOrders(
 		CustomerID int,
 		ProductID int,
 		OrderDate datetime default sysdatetime() not null,     --預設目前的系統時間
-		ReturnDate datetime,                                     --預定歸還日期(行動電源除外)
+		ReturnDate datetime,                                       --預定歸還日期(行動電源除外)
 		CancelDate datetime,
 		TakeDate datetime,
 		EndDate datetime,
+		Price money,
 		constraint PK_tCOrders primary key(OrderID),
 		constraint FK_tCOrders_tCustomers foreign key(CustomerID)
 		references dbX.dbo.tCustomers(CustomerID),
@@ -177,7 +178,7 @@ Create table tCOrderDetail(
 		OrderID int,
 		RoomID int,
 		CouponID int,
-		Price money,
+		UnitPrice money,
 		constraint PK_tCOrderDetail primary key (OrderID asc,RoomID ASC),
 		constraint FK_tCOrderDetail_tCOrders foreign key(OrderID)
 		references dbX.dbo.tCOrders(OrderID),
@@ -268,7 +269,6 @@ go
 
 ----------------------------------[tSuppliers] 資料表
 SET IDENTITY_INSERT [dbo].[tSuppliers] ON 
-
 INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (1, N'巴拉巴拉', N'bb@gmail.com', N'09111', N'b123', N'台南市南區', 100, 0)
 INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (8, N'明明', N'mm@gmail.com', N'09222', N'm123', N'台南市東區', 100, 0)
 INSERT [dbo].[tSuppliers] ([SupplierID], [Name], [Email], [Phone], [Password], [Address], [CreditPoints], [BlackListed]) VALUES (9, N'賣西瓜', N'mimi@gmail.com', N'09333', N'mi12', NULL, 100, 0)
