@@ -153,7 +153,7 @@ go
 drop table if exists tCOrders
 create table tCOrders(
 		OrderID int identity(1,1),
-		TradeNo nvarchar(20),
+		TradeNo int,
 		CustomerID int,
 		ProductID int,
 		OrderDate datetime default sysdatetime() not null,     --預設目前的系統時間
