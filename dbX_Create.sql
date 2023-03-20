@@ -140,7 +140,7 @@ drop table if exists tCoupons
 Create table tCoupons(
 		CouponID int identity(1,1),
 		Code nvarchar(50),
-		Discount money,            --折扣都用5折(0.5)、6折(0.6)、79折(0.79)
+		Discount money,            --輸入小數點，ex 0.5，折扣都用5折(0.5)、6折(0.6)、79折(0.79)
 		ExpiryDate datetime,
 		Quantity int,
 		Available bit default 1,
@@ -295,6 +295,7 @@ SET IDENTITY_INSERT [dbo].[tETitle] OFF
 SET IDENTITY_INSERT [dbo].[tProducts] ON 
 INSERT [dbo].[tProducts] ([ProductID], [SupplierID], [Name]) VALUES (1, 1, N'巴拉巴拉的產品')
 INSERT [dbo].[tProducts] ([ProductID], [SupplierID], [Name]) VALUES (2, 8, N'明明的產品')
+INSERT [dbo].[tProducts] ([ProductID], [SupplierID], [Name]) VALUES (3, 9, N'西瓜的產品')
 SET IDENTITY_INSERT [dbo].[tProducts] OFF
 
 ----------------------------------[tPSite] 資料表
@@ -303,16 +304,25 @@ INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Lati
 INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (5, 1, N'巴拉巴拉的第二站點', NULL, NULL, NULL, NULL, NULL, NULL)
 INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (6, 2, N'明明的第一站點', NULL, NULL, NULL, NULL, NULL, NULL)
 INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (7, 2, N'明明的第二戰點', NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (8, 3, N'西瓜的第一站點', N'1.jpg', N'0800~1700', N'111', N'222', N'南區', N'西瓜站點1描述')
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (10, 3, N'西瓜的第2站點', N'2.jpg', N'0800~2000', N'333', N'444', N'北區', N'西瓜站點2描述')
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (11, 3, N'西瓜的第3站點', N'3.jpg', N'0800~2200', N'555', N'666', N'東區', N'西瓜站點3描述')
 SET IDENTITY_INSERT [dbo].[tPSite] OFF
 
 ----------------------------------[tPSiteRoom] 資料表
 SET IDENTITY_INSERT [dbo].[tPSiteRoom] ON 
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description]) VALUES (1, 2, 1, 10.0000, 100.0000, NULL, NULL, 0, NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description]) VALUES (2, 2, 5, 15.0000, 150.0000, NULL, NULL, 0, NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description]) VALUES (3, 5, 1, 11.0000, 110.0000, NULL, NULL, 0, NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description]) VALUES (4, 5, 5, 12.0000, 120.0000, NULL, NULL, 0, NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description]) VALUES (5, 6, 2, 13.0000, 130.0000, NULL, NULL, 0, NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description]) VALUES (6, 6, 3, 14.0000, 140.0000, NULL, NULL, 0, NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (1, 2, 1, 10.0000, 100.0000, NULL, NULL, 0, NULL, NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (2, 2, 5, 15.0000, 150.0000, NULL, NULL, 0, NULL, NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (3, 5, 1, 11.0000, 110.0000, NULL, NULL, 0, NULL, NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (4, 5, 5, 12.0000, 120.0000, NULL, NULL, 0, NULL, NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (5, 6, 2, 13.0000, 130.0000, NULL, NULL, 0, NULL, NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (6, 6, 3, 14.0000, 140.0000, NULL, NULL, 0, NULL, NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (7, 8, 2, 14.0000, 140.0000, 10, N'11.jpgg', 0, N'站點8房間1描述', N'123')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (8, 8, 3, 13.0000, 130.0000, 15, N'22.jpg', 0, N'站點8房間2描述', N'456')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (9, 8, 1, 12.0000, 120.0000, 17, N'33.jpg', 0, N'站點8房間3描述', N'789')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (10, 10, 5, 12.0000, 130.0000, 16, N'44.jpg', 0, N'站點10房間1描述', N'111')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (11, 11, 1, 10.0000, 100.0000, 9, N'55.jpg', 0, N'站點11房間1描述', N'222')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWork]) VALUES (12, 11, 4, 11.0000, 121.0000, 18, N'66.jpg', 0, N'站點11房間2描述', N'333')
 SET IDENTITY_INSERT [dbo].[tPSiteRoom] OFF
 
 ----------------------------------[tCustomers] 資料表
