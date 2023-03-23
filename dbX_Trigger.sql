@@ -31,6 +31,7 @@ create trigger tg_tProducts_Delete on tProducts
 instead of Delete
 as
 begin
+	print 'tProducts NESTLEVEL' + str(@@NESTLEVEL )
 	declare @ProductID int, @SiteID int
 	select @ProductID=dp.ProductID, @SiteID=dps.SiteID from deleted as dp
 	join tPSite as dps on dp.ProductID=dps.ProductID
@@ -53,23 +54,26 @@ go
 create trigger tg_tPSite_Delete on tPSite
 instead of Delete
 as
-IF @@NESTLEVEL >= 2
-	begin
-		declare @ProductID int
-		select @ProductID=ProductID from deleted
-		delete from tPSite where ProductID=@ProductID
-		--print 'NESTLEVEL' + str(@@NESTLEVEL )
-	end
-else
-	begin
-		declare @SiteID int
-		select @SiteID=SiteID from deleted
-		delete from tPSiteRoom where SiteID=@SiteID
-		delete from tPSite where SiteID=@SiteID
-		--print 'PSSSS' + str(@@NESTLEVEL )
-		--select * from tPSite where SiteID=@SiteID
-		--select * from tPSiteRoom where SiteID=@SiteID
-	end
+begin
+	print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
+	IF @@NESTLEVEL = 2
+		begin
+			print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
+			declare @ProductID int
+			select @ProductID=ProductID from deleted
+			delete from tPSite where ProductID=@ProductID
+		end
+	else
+		begin
+			print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
+			declare @SiteID int
+			select @SiteID=SiteID from deleted
+			delete from tPSiteRoom where SiteID=@SiteID
+			delete from tPSite where SiteID=@SiteID
+		end
+end
+			--select * from tPSite where SiteID=@SiteID
+			--select * from tPSiteRoom where SiteID=@SiteID
 
 --=================================================
 
