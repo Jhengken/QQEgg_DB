@@ -55,26 +55,33 @@ create trigger tg_tPSite_Delete on tPSite
 instead of Delete
 as
 begin
-	print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
+	print '1 Object Name' + OBJECT_NAME(@@PROCID)  --目前使用哪個物件(tg_tPSite_Delete)
+	print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )         --@@PROCID 取出來是 object_id
+
 	IF @@NESTLEVEL = 2
 		begin
+			print '2 Object Name' + OBJECT_NAME(@@PROCID)
 			print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
+
 			declare @ProductID int
 			select @ProductID=ProductID from deleted
 			delete from tPSite where ProductID=@ProductID
 		end
 	else
 		begin
+			print '3 Object Name' + OBJECT_NAME(@@PROCID)
 			print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
+
 			declare @SiteID int
 			select @SiteID=SiteID from deleted
 			delete from tPSiteRoom where SiteID=@SiteID
 			delete from tPSite where SiteID=@SiteID
 		end
 end
-			--select * from tPSite where SiteID=@SiteID
-			--select * from tPSiteRoom where SiteID=@SiteID
+--select * from tPSite where SiteID=@SiteID
+--select * from tPSiteRoom where SiteID=@SiteID
 
+--delete tPSite where SiteID = 8
 --=================================================
 
 
