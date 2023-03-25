@@ -55,12 +55,12 @@ create trigger tg_tPSite_Delete on tPSite
 instead of Delete
 as
 begin
-	print '1 Object Name' + OBJECT_NAME(@@PROCID)  --目前使用哪個物件(tg_tPSite_Delete)
+	print 'Object Name: ' + OBJECT_NAME(@@PROCID)  --目前使用哪個物件(tg_tPSite_Delete)
 	print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )         --@@PROCID 取出來是 object_id
 
 	IF @@NESTLEVEL = 2
 		begin
-			print '2 Object Name' + OBJECT_NAME(@@PROCID)
+			print 'Object Name: ' + OBJECT_NAME(@@PROCID)
 			print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
 
 			declare @ProductID int
@@ -69,7 +69,7 @@ begin
 		end
 	else
 		begin
-			print '3 Object Name' + OBJECT_NAME(@@PROCID)
+			print 'Object Name: ' + OBJECT_NAME(@@PROCID)
 			print 'tPSite NESTLEVEL' + str(@@NESTLEVEL )
 
 			declare @SiteID int
@@ -78,26 +78,9 @@ begin
 			delete from tPSite where SiteID=@SiteID
 		end
 end
+
 --select * from tPSite where SiteID=@SiteID
 --select * from tPSiteRoom where SiteID=@SiteID
 
 --delete tPSite where SiteID = 8
---=================================================
-
-
-
---=========新增tOrders也新增tOrderdetail裡面的OrderID==============
-
---drop trigger if exists tg_tCOrders_Create
---go
-
---create trigger tg_tCOrders_Create on tCOrders
---for insert
---as
---begin
---		declare @OrderID nvarchar(20)
---		select @OrderID OrderID from inserted
---		insert
---end
-
 --=================================================
