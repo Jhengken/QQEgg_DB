@@ -115,8 +115,8 @@ Create table tPSiteRoom(
 		RoomID int identity(1,1),
 		SiteID int,
 		CategoryID int,
-		HourPrice money,
-		DatePrice money,
+		HourPrice int,
+		DatePrice int,
 		Ping int,
 		Image nvarchar(50),
 		Iframe nvarchar(500),
@@ -154,7 +154,7 @@ go
 drop table if exists tCOrders
 create table tCOrders(
 		OrderID int identity(1,1),
-		TradeNo int,
+		TradeNo nvarchar(20),
 		CustomerID int,
 		ProductID int,
 		OrderDate datetime default sysdatetime() not null,     --預設目前的系統時間
