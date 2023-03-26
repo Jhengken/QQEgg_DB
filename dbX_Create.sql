@@ -300,12 +300,12 @@ SET IDENTITY_INSERT [dbo].[tProducts] OFF
 
 ----------------------------------[tPSite] 資料表
 SET IDENTITY_INSERT [dbo].[tPSite] ON 
-INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (2, 1, N'巴拉巴拉的第一站點', NULL, N'08:00 ~ 20:00', N'25.0402', N'121.5146', NULL, NULL)
-INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (5, 1, N'巴拉巴拉的第二站點', NULL, N'08:00 ~ 20:00', N'25.0264', N'121.5431', NULL, NULL)
-INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (6, 2, N'明明的第一站點', NULL, N'08:00 ~ 20:00', N'25.0358', N'121.5675', NULL, NULL)
-INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (7, 2, N'明明的第二戰點', NULL, N'08:00 ~ 20:00', N'24.1208', N'120.6676', NULL, NULL)
-INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (8, 3, N'西瓜的第一站點', N'1.jpg', N'08:00 ~ 20:00', N'24.1623', N'120.6415', N'南區', N'西瓜站點1描述')
-INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (10, 3, N'西瓜的第2站點', N'2.jpg', N'08:00 ~ 20:00', N'22.9923', N'120.2042', N'北區', N'西瓜站點2描述')
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (2, 1, N'巴拉巴拉的第一站點', NULL, N'08:00~20:00', N'25.0402', N'121.5146', NULL, NULL)
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (5, 1, N'巴拉巴拉的第二站點', NULL, N'08:00~20:00', N'25.0264', N'121.5431', NULL, NULL)
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (6, 2, N'明明的第一站點', NULL, N'08:00~20:00', N'25.0358', N'121.5675', NULL, NULL)
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (7, 2, N'明明的第二戰點', NULL, N'08:00~20:00', N'24.1208', N'120.6676', NULL, NULL)
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (8, 3, N'西瓜的第一站點', N'1.jpg', N'08:00~20:00', N'24.1623', N'120.6415', N'南區', N'西瓜站點1描述')
+INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (10, 3, N'西瓜的第2站點', N'2.jpg', N'08:00~20:00', N'22.9923', N'120.2042', N'北區', N'西瓜站點2描述')
 INSERT [dbo].[tPSite] ([SiteID], [ProductID], [Name], [Image], [OpenTime], [Latitude], [Longitude], [Address], [Description]) VALUES (11, 3, N'西瓜的第3站點', N'3.jpg', N'08:00~20:00', N'23.0382', N'120.1827', N'東區', N'西瓜站點3描述')
 SET IDENTITY_INSERT [dbo].[tPSite] OFF
 
