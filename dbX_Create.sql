@@ -311,18 +311,18 @@ SET IDENTITY_INSERT [dbo].[tPSite] OFF
 
 ----------------------------------[tPSiteRoom] 資料表
 SET IDENTITY_INSERT [dbo].[tPSiteRoom] ON 
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (1, 2, 1, 10, 100, 15, N'14.jpg', 0, N'站點8房間1描述', NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (2, 2, 5, 15, 150, 150, N'5.jpg', 0, N'站點8房間1描述', NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (3, 5, 1, 11, 110, 33, N'202303chengbao.jpg', 0, N'站點8房間1描述', NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (4, 5, 5, 12, 120, 25, N'4.jpg', 0, N'站點8房間1描述', NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (5, 6, 2, 13, 130, 20, N'13.jpg', 0, N'站點8房間1描述', NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (6, 6, 3, 14, 140, 15, N'12.jpg', 0, N'站點8房間1描述', NULL)
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (7, 8, 2, 14, 140, 10, N'11.jpg', 0, N'站點8房間1描述', N'123')
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (8, 8, 3, 13, 130, 15, N'9.jpg', 0, N'站點8房間2描述', N'456')
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (9, 8, 1, 12, 120, 17, N'8.jpg', 0, N'站點8房間3描述', N'789')
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (10, 10, 5, 12, 130, 16, N'7.jpg', 0, N'站點10房間1描述', N'111')
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (11, 11, 1, 10, 100, 9, N'6.jpg', 0, N'站點11房間1描述', N'222')
-INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (12, 11, 4, 11, 121, 18, N'10.jpg', 0, N'站點11房間2描述', N'333')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (1, 2, 1, 10, 100, 15, N'1-1.jpg', 0, N'站點8房間1描述', NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (2, 2, 5, 15, 150, 150, N'5-1.jpg', 0, N'站點8房間1描述', NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (3, 5, 1, 11, 110, 33, N'1-2.jpg', 0, N'站點8房間1描述', NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (4, 5, 5, 12, 120, 25, N'5-2.jpg', 0, N'站點8房間1描述', NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (5, 6, 2, 13, 130, 20, N'2-1.jpg', 0, N'站點8房間1描述', NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (6, 6, 3, 14, 140, 15, N'3-1.jpg', 0, N'站點8房間1描述', NULL)
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (7, 8, 2, 14, 140, 10, N'2-2.jpg', 0, N'站點8房間1描述', N'123')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (8, 8, 3, 13, 130, 15, N'3-2.jpg', 0, N'站點8房間2描述', N'456')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (9, 8, 1, 12, 120, 17, N'1-3.jpg', 0, N'站點8房間3描述', N'789')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (10, 10, 5, 12, 130, 16, N'5-3.jpg', 0, N'站點10房間1描述', N'111')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (11, 11, 1, 10, 100, 9, N'1-1.jpg', 0, N'站點11房間1描述', N'222')
+INSERT [dbo].[tPSiteRoom] ([RoomID], [SiteID], [CategoryID], [HourPrice], [DatePrice], [Ping], [Image], [status], [Description], [RoomPassWord]) VALUES (12, 11, 4, 11, 121, 18, N'4-1.jpg', 0, N'站點11房間2描述', N'333')
 SET IDENTITY_INSERT [dbo].[tPSiteRoom] OFF
 
 ----------------------------------[tCustomers] 資料表
